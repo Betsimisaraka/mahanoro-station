@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-function Trip() {
+function TripContainer() {
     const cities = useSelector(state => state.cities);
     console.log(cities);
     const { tripId } = useParams();
@@ -39,4 +39,4 @@ function Trip() {
     )
 }
 
-export default Trip;
+export default TripContainer;

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getCities } from '../actions';
 
-function Destination() {
+function DestinationContainer() {
     const { destination } = useParams();
     console.log(destination);
     const cities = useSelector(state => state.cities);
@@ -36,4 +36,4 @@ function Destination() {
     )
 }
 
-export default Destination;
+export default DestinationContainer;
