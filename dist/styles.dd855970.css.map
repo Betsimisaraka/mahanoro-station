@@ -1,0 +1,1 @@
+{"version":3,"sources":["src/styles.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"styles.dd855970.css","sourceRoot":"..","sourcesContent":[".isvailable, .notvailable {\r\n    border: none\r\n}\r\n\r\n.isvailable {\r\n    background-color: transparent;\r\n}\r\n\r\n.notvailable {\r\n    background-color: red;\r\n}"]}

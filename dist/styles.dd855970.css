@@ -1,0 +1,13 @@
+.isvailable, .notvailable {
+    border: none
+}
+
+.isvailable {
+    background-color: transparent;
+}
+
+.notvailable {
+    background-color: red;
+}
+
+/*# sourceMappingURL=/styles.dd855970.css.map */
