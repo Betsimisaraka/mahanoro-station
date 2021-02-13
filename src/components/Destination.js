@@ -1,26 +1,39 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getCities } from '../actions';
 
 function Destination() {
+    const { destination } = useParams();
+    console.log(destination);
     const cities = useSelector(state => state.cities);
-    const destinations = useSelector(state => state.destinations);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getCities());
     }, [])
 
+    const filterCities = cities.filter(city => city.destination === destination);
+
     return (
         <div>
-            {destinations.map(city => (
-                <Link to={`/city/${city.city}`} key={city.id}>
-                    <h2>{city.city}</h2>
-                </Link>
-            ))}
+            <h2>Next trips to: <span>{destination}</span></h2>
+            <ul>     
+                {filterCities.map(city => (
+                    <li key={city.id}>
+                        <h2>{city.departureTime}</h2>
+                        {/* {city.seats.map(seat => (
+                            <p key={seat.id}>{seat.isAvailable ? "seats are availabel" : "seats are not availablle"}</p>
+                        ))} */}
+                        <Link to={`/trip/${city.id}`}>
+                            <button type="button">Book a place</button>
+                        </Link>
+                    </li>
+                ))}
+            </ul>
         </div>
     )
 }
 
-export default Destination
+export default Destination;

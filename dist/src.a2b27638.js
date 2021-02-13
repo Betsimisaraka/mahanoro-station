@@ -36255,7 +36255,33 @@ function Header() {
 
 var _default = Header;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"src/actions/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"src/components/Cities.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRedux = require("react-redux");
+
+var _reactRouterDom = require("react-router-dom");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Cities() {
+  const destinations = (0, _reactRedux.useSelector)(state => state.destinations);
+  return /*#__PURE__*/_react.default.createElement("div", null, destinations.map(city => /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: `/city/${city.city}`,
+    key: city.id
+  }, /*#__PURE__*/_react.default.createElement("h2", null, city.city))));
+}
+
+var _default = Cities;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/actions/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36302,21 +36328,56 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function Destination() {
+  const {
+    destination
+  } = (0, _reactRouterDom.useParams)();
+  console.log(destination);
   const cities = (0, _reactRedux.useSelector)(state => state.cities);
-  const destinations = (0, _reactRedux.useSelector)(state => state.destinations);
   const dispatch = (0, _reactRedux.useDispatch)();
   (0, _react.useEffect)(() => {
     dispatch((0, _actions.getCities)());
   }, []);
-  return /*#__PURE__*/_react.default.createElement("div", null, destinations.map(city => /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-    to: `/city/${city.city}`,
+  const filterCities = cities.filter(city => city.destination === destination);
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Next trips to: ", /*#__PURE__*/_react.default.createElement("span", null, destination)), /*#__PURE__*/_react.default.createElement("ul", null, filterCities.map(city => /*#__PURE__*/_react.default.createElement("li", {
     key: city.id
-  }, /*#__PURE__*/_react.default.createElement("h2", null, city.city))));
+  }, /*#__PURE__*/_react.default.createElement("h2", null, city.departureTime), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: `/trip/${city.id}`
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    type: "button"
+  }, "Book a place"))))));
 }
 
 var _default = Destination;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../actions":"src/actions/index.js"}],"src/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../actions":"src/actions/index.js"}],"src/components/Trip.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRedux = require("react-redux");
+
+var _reactRouterDom = require("react-router-dom");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Trip() {
+  const cities = (0, _reactRedux.useSelector)(state => state.cities);
+  console.log(cities);
+  const {
+    tripId
+  } = (0, _reactRouterDom.useParams)();
+  console.log(tripId);
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Trip"));
+}
+
+var _default = Trip;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36330,16 +36391,25 @@ var _reactRouterDom = require("react-router-dom");
 
 var _Header = _interopRequireDefault(require("./components/Header"));
 
+var _Cities = _interopRequireDefault(require("./components/Cities"));
+
 var _Destination = _interopRequireDefault(require("./components/Destination"));
+
+var _Trip = _interopRequireDefault(require("./components/Trip"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    exact: true,
     path: "/"
-  }, /*#__PURE__*/_react.default.createElement(_Destination.default, null))));
+  }, /*#__PURE__*/_react.default.createElement(_Cities.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/city/:destination"
+  }, /*#__PURE__*/_react.default.createElement(_Destination.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/trip/:tripId"
+  }, /*#__PURE__*/_react.default.createElement(_Trip.default, null))));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./components/Header":"src/components/Header.js","./components/Destination":"src/components/Destination.js"}],"node_modules/redux-thunk/es/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./components/Header":"src/components/Header.js","./components/Cities":"src/components/Cities.js","./components/Destination":"src/components/Destination.js","./components/Trip":"src/components/Trip.js"}],"node_modules/redux-thunk/es/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
