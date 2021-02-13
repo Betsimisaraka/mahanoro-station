@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Header from './components/Header';
 import Cities from './components/Cities';
 import Destination from './components/Destination';
 import Trip from './components/Trip';
@@ -8,7 +7,6 @@ import Trip from './components/Trip';
 export default function App() {
     return (
         <div>
-            <Header />
             <Switch>
                 <Route exact path="/">
                     <Cities />
