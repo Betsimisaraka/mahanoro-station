@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Header from './components/Header';
+import Destination from './components/Destination';
 
 export default function App() {
     return (
         <div>
-            <h2>Mahanoro station</h2>
+            <Header />
+            <Switch>
+                <Route path="/">
+                    <Destination />
+                </Route>
+            </Switch>
         </div>
     )
 }

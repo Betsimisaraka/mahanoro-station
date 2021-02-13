@@ -36237,7 +36237,86 @@ var _shallowEqual = _interopRequireDefault(require("./utils/shallowEqual"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _batch.setBatch)(_reactBatchedUpdates.unstable_batchedUpdates);
-},{"./components/Provider":"node_modules/react-redux/es/components/Provider.js","./components/connectAdvanced":"node_modules/react-redux/es/components/connectAdvanced.js","./components/Context":"node_modules/react-redux/es/components/Context.js","./connect/connect":"node_modules/react-redux/es/connect/connect.js","./hooks/useDispatch":"node_modules/react-redux/es/hooks/useDispatch.js","./hooks/useSelector":"node_modules/react-redux/es/hooks/useSelector.js","./hooks/useStore":"node_modules/react-redux/es/hooks/useStore.js","./utils/batch":"node_modules/react-redux/es/utils/batch.js","./utils/reactBatchedUpdates":"node_modules/react-redux/es/utils/reactBatchedUpdates.js","./utils/shallowEqual":"node_modules/react-redux/es/utils/shallowEqual.js"}],"src/App.js":[function(require,module,exports) {
+},{"./components/Provider":"node_modules/react-redux/es/components/Provider.js","./components/connectAdvanced":"node_modules/react-redux/es/components/connectAdvanced.js","./components/Context":"node_modules/react-redux/es/components/Context.js","./connect/connect":"node_modules/react-redux/es/connect/connect.js","./hooks/useDispatch":"node_modules/react-redux/es/hooks/useDispatch.js","./hooks/useSelector":"node_modules/react-redux/es/hooks/useSelector.js","./hooks/useStore":"node_modules/react-redux/es/hooks/useStore.js","./utils/batch":"node_modules/react-redux/es/utils/batch.js","./utils/reactBatchedUpdates":"node_modules/react-redux/es/utils/reactBatchedUpdates.js","./utils/shallowEqual":"node_modules/react-redux/es/utils/shallowEqual.js"}],"src/components/Header.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Header() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Mahanoro station"), /*#__PURE__*/_react.default.createElement("p", null, "My accout"));
+}
+
+var _default = Header;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"src/actions/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getCities = getCities;
+exports.setDestination = setDestination;
+
+function getCities() {
+  return async dispatch => {
+    const response = await fetch("https://gist.githubusercontent.com/Pinois/36bb5fbf9b6a686f0baf4006dd137bca/raw/a40d8b3f696a75f388db286d57bdd05a925fa0e7/trips.json");
+    const data = await response.json();
+    dispatch({
+      type: "GET_CITIES",
+      payload: data
+    });
+  };
+}
+
+function setDestination(data) {
+  return {
+    type: "SET_DESTINATION",
+    payload: data
+  };
+}
+},{}],"src/components/Destination.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRedux = require("react-redux");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _actions = require("../actions");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function Destination() {
+  const cities = (0, _reactRedux.useSelector)(state => state.cities);
+  const destinations = (0, _reactRedux.useSelector)(state => state.destinations);
+  const dispatch = (0, _reactRedux.useDispatch)();
+  (0, _react.useEffect)(() => {
+    dispatch((0, _actions.getCities)());
+  }, []);
+  return /*#__PURE__*/_react.default.createElement("div", null, destinations.map(city => /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: `/city/${city.city}`,
+    key: city.id
+  }, /*#__PURE__*/_react.default.createElement("h2", null, city.city))));
+}
+
+var _default = Destination;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../actions":"src/actions/index.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36247,12 +36326,48 @@ exports.default = App;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _reactRouterDom = require("react-router-dom");
+
+var _Header = _interopRequireDefault(require("./components/Header"));
+
+var _Destination = _interopRequireDefault(require("./components/Destination"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Mahanoro station"));
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/"
+  }, /*#__PURE__*/_react.default.createElement(_Destination.default, null))));
 }
-},{"react":"node_modules/react/index.js"}],"src/state.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./components/Header":"src/components/Header.js","./components/Destination":"src/components/Destination.js"}],"node_modules/redux-thunk/es/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function createThunkMiddleware(extraArgument) {
+  return function (_ref) {
+    var dispatch = _ref.dispatch,
+        getState = _ref.getState;
+    return function (next) {
+      return function (action) {
+        if (typeof action === 'function') {
+          return action(dispatch, getState, extraArgument);
+        }
+
+        return next(action);
+      };
+    };
+  };
+}
+
+var thunk = createThunkMiddleware();
+thunk.withExtraArgument = createThunkMiddleware;
+var _default = thunk;
+exports.default = _default;
+},{}],"src/state.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36261,6 +36376,19 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _default = {
   cities: [],
+  destinations: [{
+    id: 1,
+    city: 'Antananarivo'
+  }, {
+    id: 2,
+    city: 'Toamasina'
+  }, {
+    id: 3,
+    city: 'Vatomandry'
+  }, {
+    id: 4,
+    city: 'Moramanga'
+  }],
   users: [{
     id: 1,
     firstName: "Anita",
@@ -36279,21 +36407,34 @@ exports.default = void 0;
 
 var _redux = require("redux");
 
-function cities() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-  return state;
+function cities(state = [], action) {
+  switch (action.type) {
+    case "GET_CITIES":
+      return action.payload;
+
+    default:
+      return state;
+  }
 }
 
-function users() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var action = arguments.length > 1 ? arguments[1] : undefined;
+function destinations(state = [], action) {
+  switch (action.type) {
+    case "SET_DESTINATION":
+      return action.payload;
+
+    default:
+      return state;
+  }
+}
+
+function users(state = [], action) {
   return state;
 }
 
 var _default = (0, _redux.combineReducers)({
-  cities: cities,
-  users: users
+  cities,
+  destinations,
+  users
 });
 
 exports.default = _default;
@@ -36307,16 +36448,18 @@ exports.default = void 0;
 
 var _redux = require("redux");
 
+var _reduxThunk = _interopRequireDefault(require("redux-thunk"));
+
 var _state = _interopRequireDefault(require("./state"));
 
 var _reducers = _interopRequireDefault(require("./reducers"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var store = (0, _redux.createStore)(_reducers.default, _state.default);
+const store = (0, _redux.createStore)(_reducers.default, _state.default, (0, _redux.applyMiddleware)(_reduxThunk.default));
 var _default = store;
 exports.default = _default;
-},{"redux":"node_modules/redux/es/redux.js","./state":"src/state.js","./reducers":"src/reducers/index.js"}],"src/index.js":[function(require,module,exports) {
+},{"redux":"node_modules/redux/es/redux.js","redux-thunk":"node_modules/redux-thunk/es/index.js","./state":"src/state.js","./reducers":"src/reducers/index.js"}],"src/index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

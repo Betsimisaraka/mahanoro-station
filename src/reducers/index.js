@@ -1,7 +1,21 @@
 import {combineReducers} from 'redux';
 
 function cities(state=[], action) {
-    return state
+    switch(action.type) {
+        case "GET_CITIES":
+            return action.payload
+        default:
+            return state;
+    }
+}
+
+function destinations(state=[], action) {
+    switch (action.type) {
+        case "SET_DESTINATION":
+            return action.payload
+        default:
+            return state;
+    }
 }
 
 function users(state=[], action) {
@@ -10,5 +24,6 @@ function users(state=[], action) {
 
 export default combineReducers({
     cities,
+    destinations,
     users,
 })

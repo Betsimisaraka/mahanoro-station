@@ -1,5 +1,11 @@
 export default {
     cities: [],
+    destinations: [
+        {id: 1, city: 'Antananarivo'},
+        {id: 2, city: 'Toamasina'},
+        {id: 3, city: 'Vatomandry'},
+        {id: 4, city: 'Moramanga'},
+    ],
     users: [
         {
             id: 1,
