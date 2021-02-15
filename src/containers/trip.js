@@ -11,6 +11,11 @@ function TripContainer() {
     const findId = cities && cities.find(city => city.id !== tripId);
     console.log(findId);
 
+    const departure = new Date(findId.departureTime);
+    const departureDate = departure.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+    const departureTime = departure.toLocaleDateString();
+
+
     return (
         <div>
             <h2>Book a seat to: <span>{findId && findId.destination}</span></h2>
@@ -26,7 +31,7 @@ function TripContainer() {
             </div>
             <div>
                 <h3>Trip informations:</h3>
-                <p>Departure time: <span>{findId && findId.departureTime}</span></p> 
+                <p>Departure time: <span>{departureTime, departureDate}</span></p> 
                 <p>Driver: <span>{findId && findId.driverName}</span></p>
                 <p>Driver's contact: <span>{findId && findId.driverContact}</span></p> 
                 <p>Estimated duration: <span>{findId && findId.estimatedDuration}</span></p>

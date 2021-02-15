@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getCities } from '../actions';
+import { foramtDate, formatDate } from '../Utils/dateFormat';
 
 function DestinationContainer() {
     const { destination } = useParams();
@@ -20,17 +21,35 @@ function DestinationContainer() {
         <div>
             <h2>Next trips to: <span>{destination}</span></h2>
             <ul>     
-                {filterCities.map(city => (
-                    <li key={city.id}>
-                        <h2>{city.departureTime}</h2>
-                        {/* {city.seats.map(seat => (
-                            <p key={seat.id}>{seat.isAvailable ? "seats are availabel" : "seats are not availablle"}</p>
-                        ))} */}
-                        <Link to={`/trip/${city.id}`}>
-                            <button type="button">Book a place</button>
-                        </Link>
-                    </li>
-                ))}
+                {filterCities.map(city => {
+                    const date = new Date(city.departureTime);
+                    const options = {weekday: 'long'}
+                    const getDayName = date.toLocaleDateString('en-US', options);
+                    const getFullDate = date.toLocaleDateString();
+                    const getTime = date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+
+                    const availableSeates = city.seats.reduce((a, b) => b.isAvailable ? ++a : a, 0);
+                    console.log(availableSeates);
+
+                    return (
+                        <li key={city.id}>
+                            <div>
+                                <p>{getDayName}</p>
+                                <p>{getTime}</p>
+                            </div>
+                            <h2>{getFullDate}</h2>
+                            {city.seats.map(seat => {
+                                return (
+                                    <p key={seat.id}>seats are availabel</p>
+                                )
+                            })}
+                            <Link to={`/trip/${city.id}`}>
+                                <button type="button">Book a place</button>
+                            </Link>
+                        </li>
+                    )
+                    
+                })}
             </ul>
         </div>
     )
