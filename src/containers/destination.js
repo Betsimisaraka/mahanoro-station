@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+
+import { Destination } from '../components';
 import { getCities } from '../actions';
-import { foramtDate, formatDate } from '../Utils/dateFormat';
 
 function DestinationContainer() {
     const { destination } = useParams();
@@ -18,9 +19,9 @@ function DestinationContainer() {
     const filterCities = cities.filter(city => city.destination === destination);
 
     return (
-        <div>
-            <h2>Next trips to: <span>{destination}</span></h2>
-            <ul>     
+        <Destination>
+            <Destination.Title>Next trips to: <span>{destination}</span></Destination.Title>
+            <Destination.Base>     
                 {filterCities.map(city => {
                     const date = new Date(city.departureTime);
                     const options = {weekday: 'long'}
@@ -29,26 +30,27 @@ function DestinationContainer() {
                     const getTime = date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
 
                     const availableSeates = city.seats.reduce((a, b) => b.isAvailable ? ++a : a, 0);
-                    console.log(availableSeates);
 
                     return (
-                        <li key={city.id}>
-                            <div>
-                                <p>{getDayName}</p>
-                                <p>{getTime}</p>
-                            </div>
-                            <h2>{getFullDate}</h2>
-                            <p><span>{availableSeates}</span> seats lefts</p>
+                        <Destination.Frame key={city.id}>
+                            <Destination.Group>
+                                <Destination.Day>{getDayName}</Destination.Day>
+                                <Destination.Time>{getTime}</Destination.Time>
+                            </Destination.Group>
+                            <Destination.Group>    
+                                <Destination.Date>{getFullDate}</Destination.Date>
+                                <Destination.Seats><span>{availableSeates}</span> seats lefts</Destination.Seats>
+                            </Destination.Group>
                             
-                            <Link to={`/trip/${city.id}`}>
-                                <button type="button">Book a place</button>
-                            </Link>
-                        </li>
+                            <Destination.Link to={`/trip/${city.id}`}>
+                                <Destination.Book type="button">Book a place</Destination.Book>
+                            </Destination.Link>
+                        </Destination.Frame>
                     )
                     
                 })}
-            </ul>
-        </div>
+            </Destination.Base>
+        </Destination>
     )
 }
 
