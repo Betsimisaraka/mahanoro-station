@@ -2,6 +2,7 @@ import React, {useEffect, useRef} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
+import { Trip, Seats, TripInfo } from '../components';
 import {setCountSeats, toggleModal} from '../actions';
 
 function TripContainer() {
@@ -26,15 +27,14 @@ function TripContainer() {
     const totalPrice = findId && findId.price * countSeats;
 
     return (
-        <div>
-            <h2>Book a seat to: <span>{findId && findId.destination}</span></h2>
-            <div>
-                <h3>Pick a seat</h3>  
-                <ul>
+        <Trip>
+            <Trip.Title>Book a seat to: <Trip.Span>{findId && findId.destination}</Trip.Span></Trip.Title>
+            <Seats>
+                <Seats.Title>Pick a seat</Seats.Title>  
+                <Seats.Base>
                     {findId && findId.seats.map(seat => (
-                        <li key={seat.id}>
-                            <button 
-                                ref={btnRef} 
+                        <Seats.Group key={seat.id}>
+                            <Seats.Button 
                                 onClick={() => {
                                     if (seat.isAvailable) {
                                         return dispatch(setCountSeats(seat.id))
@@ -43,23 +43,23 @@ function TripContainer() {
                                     }
                                 }} 
                                 className={`${seat.isAvailable ? "isvailable" : "notvailable"}`}
-                            >💺</button>
-                        </li>
+                            >💺</Seats.Button>
+                        </Seats.Group>
                     ))}
-                </ul>              
-            </div>
-            <div>
-                <h3>Trip informations:</h3>
-                <p>Departure time: <span>{departureTime}, {departureDate}</span></p> 
-                <p>Driver: <span>{findId && findId.driverName}</span></p>
-                <p>Driver's contact: <span>{findId && findId.driverContact}</span></p> 
-                <p>Estimated duration: <span>{findId && findId.estimatedDuration}</span></p>
-                <p>Breaks: <span>{findId && findId.breaks}</span></p>
-                <p>{findId && findId.price}Ar/seat</p>  
-                <button onClick={() => dispatch(toggleModal(true))}type="button">Book <span>{countSeats}</span> seats</button>
-                <p>Total: <span>{totalPrice ? totalPrice : 0}</span> Ar</p>          
-            </div>
-        </div>
+                </Seats.Base>              
+            </Seats>
+            <TripInfo>
+                <TripInfo.Title>Trip informations:</TripInfo.Title>
+                <TripInfo.Time>Departure time: <span>{departureTime}, {departureDate}</span></TripInfo.Time> 
+                <TripInfo.Name>Driver: <span>{findId && findId.driverName}</span></TripInfo.Name>
+                <TripInfo.Contact>Driver's contact: <span>{findId && findId.driverContact}</span></TripInfo.Contact> 
+                <TripInfo.Duration>Estimated duration: <span>{findId && findId.estimatedDuration}</span></TripInfo.Duration>
+                <TripInfo.Break>Breaks: <span>{findId && findId.breaks}</span></TripInfo.Break>
+                <TripInfo.Price>{findId && findId.price}Ar/seat</TripInfo.Price>  
+                <TripInfo.Book onClick={() => dispatch(toggleModal(true))}type="button">Book <span>{countSeats}</span> seats</TripInfo.Book>
+                <TripInfo.Total>Total: <span>{totalPrice ? totalPrice : 0}</span> Ar</TripInfo.Total>          
+            </TripInfo>
+        </Trip>
     )
 }
 
