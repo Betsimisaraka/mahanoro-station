@@ -3,6 +3,8 @@ import Modal from 'react-modal';
 import {useDispatch, useSelector} from 'react-redux';
 import { toggleModal } from '../actions';
 
+import{ ComfirmModal } from '../components';
+
 const customStyles = {
     content : {
       top                   : '50%',
@@ -24,14 +26,14 @@ export default function ModalContainer() {
             style={customStyles}
             contentLabel="Modal example"
         >
-            <div>
-                <button onClick={() => dispatch(toggleModal(false))} type="button">X</button>
-                <div>
-                    <h3>Booking confirmed</h3>
-                    <p>Thank you for trusting our services. Your booking has been added to your account. You can review it there.</p>
-                    <button type="button">Check your account</button>
-                </div>
-            </div>
+            <ComfirmModal>
+                <ComfirmModal.CloseBtn onClick={() => dispatch(toggleModal(false))} type="button">X</ComfirmModal.CloseBtn>
+                <ComfirmModal.Frame>
+                    <ComfirmModal.Title>Booking confirmed</ComfirmModal.Title>
+                    <ComfirmModal.Description>Thank you for trusting our services. Your booking has been added to your account. You can review it there.</ComfirmModal.Description>
+                    <ComfirmModal.ComfirmBtn type="button">Check your account</ComfirmModal.ComfirmBtn>
+                </ComfirmModal.Frame>
+            </ComfirmModal>
             
         </Modal>
     )

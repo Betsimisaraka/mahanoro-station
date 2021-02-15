@@ -38273,7 +38273,86 @@ Cities.Link = function CitiesSmall({
 }) {
   return /*#__PURE__*/_react.default.createElement(_cities.Link, restProps, children);
 };
-},{"react":"node_modules/react/index.js","./styles/cities":"src/components/cities/styles/cities.js"}],"src/components/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./styles/cities":"src/components/cities/styles/cities.js"}],"src/components/modal/styles/modal.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ComfirmBtn = exports.Description = exports.Title = exports.Frame = exports.CloseBtn = exports.Container = void 0;
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const Container = _styledComponents.default.div``;
+exports.Container = Container;
+const CloseBtn = _styledComponents.default.button``;
+exports.CloseBtn = CloseBtn;
+const Frame = _styledComponents.default.div``;
+exports.Frame = Frame;
+const Title = _styledComponents.default.h3``;
+exports.Title = Title;
+const Description = _styledComponents.default.p``;
+exports.Description = Description;
+const ComfirmBtn = _styledComponents.default.button``;
+exports.ComfirmBtn = ComfirmBtn;
+},{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/modal/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = ComfirmModal;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _modal = require("./styles/modal");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function ComfirmModal({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_modal.Container, restProps, children);
+}
+
+ComfirmModal.CloseBtn = function ComfirmModalCloseBtn({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_modal.CloseBtn, restProps, children);
+};
+
+ComfirmModal.Frame = function ComfirmModalFrame({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_modal.Frame, restProps, children);
+};
+
+ComfirmModal.Title = function ComfirmModalTitle({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_modal.Title, restProps, children);
+};
+
+ComfirmModal.Description = function ComfirmModaldescription({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_modal.Description, restProps, children);
+};
+
+ComfirmModal.ComfirmBtn = function ComfirmModalComfirmBtn({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_modal.ComfirmBtn, restProps, children);
+};
+},{"react":"node_modules/react/index.js","./styles/modal":"src/components/modal/styles/modal.js"}],"src/components/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38291,13 +38370,21 @@ Object.defineProperty(exports, "Cities", {
     return _cities.default;
   }
 });
+Object.defineProperty(exports, "ComfirmModal", {
+  enumerable: true,
+  get: function () {
+    return _modal.default;
+  }
+});
 
 var _header = _interopRequireDefault(require("./header"));
 
 var _cities = _interopRequireDefault(require("./cities"));
 
+var _modal = _interopRequireDefault(require("./modal"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./header":"src/components/header/index.js","./cities":"src/components/cities/index.js"}],"src/containers/header.js":[function(require,module,exports) {
+},{"./header":"src/components/header/index.js","./cities":"src/components/cities/index.js","./modal":"src/components/modal/index.js"}],"src/containers/header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -58595,6 +58682,8 @@ var _reactRedux = require("react-redux");
 
 var _actions = require("../actions");
 
+var _components = require("../components");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const customStyles = {
@@ -58615,14 +58704,14 @@ function ModalContainer() {
     isOpen: displayModal,
     style: customStyles,
     contentLabel: "Modal example"
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement(_components.ComfirmModal, null, /*#__PURE__*/_react.default.createElement(_components.ComfirmModal.CloseBtn, {
     onClick: () => dispatch((0, _actions.toggleModal)(false)),
     type: "button"
-  }, "X"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Booking confirmed"), /*#__PURE__*/_react.default.createElement("p", null, "Thank you for trusting our services. Your booking has been added to your account. You can review it there."), /*#__PURE__*/_react.default.createElement("button", {
+  }, "X"), /*#__PURE__*/_react.default.createElement(_components.ComfirmModal.Frame, null, /*#__PURE__*/_react.default.createElement(_components.ComfirmModal.Title, null, "Booking confirmed"), /*#__PURE__*/_react.default.createElement(_components.ComfirmModal.Description, null, "Thank you for trusting our services. Your booking has been added to your account. You can review it there."), /*#__PURE__*/_react.default.createElement(_components.ComfirmModal.ComfirmBtn, {
     type: "button"
   }, "Check your account"))));
 }
-},{"react":"node_modules/react/index.js","react-modal":"node_modules/react-modal/lib/index.js","react-redux":"node_modules/react-redux/es/index.js","../actions":"src/actions/index.js"}],"src/pages/Modal.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-modal":"node_modules/react-modal/lib/index.js","react-redux":"node_modules/react-redux/es/index.js","../actions":"src/actions/index.js","../components":"src/components/index.js"}],"src/pages/Modal.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
