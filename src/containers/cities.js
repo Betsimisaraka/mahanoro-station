@@ -8,10 +8,10 @@ function CitiesContainer() {
 
     return (
         <Cities>
-            <Cities.SubTitle>Where are you going?</Cities.SubTitle>
+            <Cities.Title>Where are you going?</Cities.Title>
             {destinations.map(city => (
                 <Cities.Link to={`/city/${city.city}`} key={city.id}>
-                    <Cities.Title>{city.city}</Cities.Title>
+                    <Cities.SubTitle>{city.city}</Cities.SubTitle>
                 </Cities.Link>
             ))}
         </Cities>

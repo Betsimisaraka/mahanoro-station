@@ -38170,11 +38170,35 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Container = _styledComponents.default.div``;
+const Container = _styledComponents.default.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: #0F0E17;
+    padding-top: 28px;
+    padding-bottom: 29px;
+    padding-right: 68px;
+    padding-left: 68px;
+`;
 exports.Container = Container;
-const Title = _styledComponents.default.h1``;
+const Title = _styledComponents.default.h1`
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    color: #FFFFFE;
+`;
 exports.Title = Title;
-const Small = _styledComponents.default.p``;
+const Small = _styledComponents.default.p`
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: #A7A9BE;
+`;
 exports.Small = Small;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/header/index.js":[function(require,module,exports) {
 "use strict";
@@ -38228,9 +38252,25 @@ const Container = _styledComponents.default.div``;
 exports.Container = Container;
 const Title = _styledComponents.default.h2``;
 exports.Title = Title;
-const Link = (0, _styledComponents.default)(_reactRouterDom.Link)``;
+const Link = (0, _styledComponents.default)(_reactRouterDom.Link)`
+   
+
+`;
 exports.Link = Link;
-const SubTitle = _styledComponents.default.h3``;
+const SubTitle = _styledComponents.default.h3`
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background: #0F0E17;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    padding-left: 33px;
+    padding-right: 78px;
+`;
 exports.SubTitle = SubTitle;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/components/cities/index.js":[function(require,module,exports) {
 "use strict";
@@ -38553,7 +38593,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const Container = _styledComponents.default.div``;
 exports.Container = Container;
-const Title = _styledComponents.default.h2``;
+const Title = _styledComponents.default.h4``;
 exports.Title = Title;
 const Base = _styledComponents.default.ul``;
 exports.Base = Base;
@@ -38623,7 +38663,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const Container = _styledComponents.default.div``;
 exports.Container = Container;
-const Title = _styledComponents.default.h3``;
+const Title = _styledComponents.default.h4``;
 exports.Title = Title;
 const Time = _styledComponents.default.p``;
 exports.Time = Time;
@@ -38823,10 +38863,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function CitiesContainer() {
   const destinations = (0, _reactRedux.useSelector)(state => state.destinations);
-  return /*#__PURE__*/_react.default.createElement(_components.Cities, null, /*#__PURE__*/_react.default.createElement(_components.Cities.SubTitle, null, "Where are you going?"), destinations.map(city => /*#__PURE__*/_react.default.createElement(_components.Cities.Link, {
+  return /*#__PURE__*/_react.default.createElement(_components.Cities, null, /*#__PURE__*/_react.default.createElement(_components.Cities.Title, null, "Where are you going?"), destinations.map(city => /*#__PURE__*/_react.default.createElement(_components.Cities.Link, {
     to: `/city/${city.city}`,
     key: city.id
-  }, /*#__PURE__*/_react.default.createElement(_components.Cities.Title, null, city.city))));
+  }, /*#__PURE__*/_react.default.createElement(_components.Cities.SubTitle, null, city.city))));
 }
 
 var _default = CitiesContainer;
@@ -41100,9 +41140,44 @@ var _styledComponents = require("styled-components");
 const GlobalStyles = (0, _styledComponents.createGlobalStyle)`
     html, body {
         font-family: 'Rubik', Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
     }
     ul {
         list-style: none;
+    }
+
+    h2 {
+        font-family: Rubik;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 64px;
+        line-height: 76px;
+        color: #000000;
+    }
+    h3 {
+        font-family: Rubik;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 43px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #000000;
+    }
+
+    h4 {
+        font-family: Rubik;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #0F0E17;
+    }
+    a {
+        text-decoration: none;
     }
     .isvailable, .notvailable {
     border: none
