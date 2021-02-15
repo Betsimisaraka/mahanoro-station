@@ -1,22 +1,29 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import {toggleModal} from '../actions';
+import {setCountSeats, toggleModal} from '../actions';
 
 function TripContainer() {
     const cities = useSelector(state => state.cities);
+    const countSeats = useSelector(state => state.countSeats);
+    const selected = useSelector(state => state.selected);
     const dispatch = useDispatch();
-
+    const btnRef = useRef(null);
     const { tripId } = useParams();
 
-    const findId = cities && cities.find(city => city.id !== tripId);
-    console.log(findId);
+    useEffect(() => {
+        if (selected) {
+            btnRef.current.classList.add('selected');
+        }
+    }, [])
 
+    const findId = cities && cities.find(city => city.id !== tripId);
     const departure = new Date(findId && findId.departureTime);
     const departureTime = departure.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
     const departureDate = departure.toLocaleDateString();
 
+    const totalPrice = findId && findId.price * countSeats;
 
     return (
         <div>
@@ -26,7 +33,17 @@ function TripContainer() {
                 <ul>
                     {findId && findId.seats.map(seat => (
                         <li key={seat.id}>
-                            <button className={`${seat.isAvailable ? "isvailable" : "notvailable"}`}>💺</button>
+                            <button 
+                                ref={btnRef} 
+                                onClick={() => {
+                                    if (seat.isAvailable) {
+                                        return dispatch(setCountSeats(seat.id))
+                                    } else {
+                                        return null;
+                                    }
+                                }} 
+                                className={`${seat.isAvailable ? "isvailable" : "notvailable"}`}
+                            >💺</button>
                         </li>
                     ))}
                 </ul>              
@@ -39,8 +56,8 @@ function TripContainer() {
                 <p>Estimated duration: <span>{findId && findId.estimatedDuration}</span></p>
                 <p>Breaks: <span>{findId && findId.breaks}</span></p>
                 <p>{findId && findId.price}Ar/seat</p>  
-                <button onClick={() => dispatch(toggleModal(true))}type="button">Book 2 seats</button>
-                <p>Total: Ar</p>          
+                <button onClick={() => dispatch(toggleModal(true))}type="button">Book <span>{countSeats}</span> seats</button>
+                <p>Total: <span>{totalPrice ? totalPrice : 0}</span> Ar</p>          
             </div>
         </div>
     )

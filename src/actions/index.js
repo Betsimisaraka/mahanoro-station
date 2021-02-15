@@ -21,3 +21,16 @@ export function toggleModal() {
         type: "SHOW_MODAL",
     }
 }
+
+export function setCountSeats() {
+    return {
+        type: "SET_COUNT_SEATS",
+    }
+}
+
+export function isSelected(tripid) {
+    return {
+        type: "IS_SELECTED",
+        payload: tripid,
+    }
+}

@@ -18,4 +18,7 @@ export const GlobalStyles = createGlobalStyle`
     .notvailable {
         background-color: red;
     }
+    .selected {
+        background-color: yellow;
+    }
 `;
