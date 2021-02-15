@@ -38,11 +38,8 @@ function DestinationContainer() {
                                 <p>{getTime}</p>
                             </div>
                             <h2>{getFullDate}</h2>
-                            {city.seats.map(seat => {
-                                return (
-                                    <p key={seat.id}>seats are availabel</p>
-                                )
-                            })}
+                            <p><span>{availableSeates}</span> seats lefts</p>
+                            
                             <Link to={`/trip/${city.id}`}>
                                 <button type="button">Book a place</button>
                             </Link>

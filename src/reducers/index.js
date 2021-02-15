@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 
-function cities(state=[], action) {
+function cities(state = [], action) {
     switch(action.type) {
         case "GET_CITIES":
             return action.payload
@@ -9,7 +9,7 @@ function cities(state=[], action) {
     }
 }
 
-function destinations(state=[], action) {
+function destinations(state = [], action) {
     switch (action.type) {
         case "SET_DESTINATION":
             return action.payload
@@ -18,12 +18,22 @@ function destinations(state=[], action) {
     }
 }
 
-function users(state=[], action) {
+function users(state = [], action) {
     return state
+}
+
+function displayModal(state = false, action) {
+    switch (action.type) {
+        case "SHOW_MODAL":
+            return !state;
+        default:
+            return state;
+    }
 }
 
 export default combineReducers({
     cities,
     destinations,
     users,
+    displayModal,
 })

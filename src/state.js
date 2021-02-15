@@ -1,5 +1,6 @@
 export default {
     cities: [],
+    displayModal: false,
     destinations: [
         {id: 1, city: 'Antananarivo'},
         {id: 2, city: 'Toamasina'},

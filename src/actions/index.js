@@ -15,3 +15,9 @@ export function setDestination(data) {
         payload: data
     }
 }
+
+export function toggleModal() {
+    return {
+        type: "SHOW_MODAL",
+    }
+}
