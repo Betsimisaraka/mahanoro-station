@@ -1,12 +1,11 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import ModalContainer from './containers/modal';
-import {Home, Destination, Trip} from './pages';
+import {Home, Destination, Trip, Modal} from './pages';
 
 export default function App() {
     return (
         <div>
-            <ModalContainer />
+            <Modal />
             <Switch>
                 <Route exact path="/">
                     <Home />

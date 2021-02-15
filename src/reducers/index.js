@@ -31,9 +31,14 @@ function displayModal(state = false, action) {
     }
 }
 
+function countSeats(state = 0, action) {
+    return state;
+}
+
 export default combineReducers({
     cities,
     destinations,
     users,
     displayModal,
+    countSeats,
 })
