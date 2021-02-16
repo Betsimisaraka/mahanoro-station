@@ -1,15 +1,19 @@
 import {combineReducers} from 'redux';
 
 function cities(state = [], action) {
+    console.log(state);
     switch(action.type) {
         case "GET_CITIES":
             return action.payload;
         // case "IS_SELECTED": {
-        //     const upDatedVailable = state.seats.map(item => {
+        //     const upDatedVailable = state.map(item => {
         //         if (item.id === action.payload) {
         //             return {
         //                 ...item,
-        //                isAvailable: !item.isAvailable
+        //                 seats: {
+        //                     ...item.seats,
+        //                     isAvailable: !item.seats.isAvailable
+        //                 }
         //             }
         //         }
         //         return item;
@@ -40,7 +44,12 @@ function currentUser(state = [], action) {
 }
 
 function booking(state = [], action) {
-    return state;
+    switch (action.type) {
+        case "ADD_ACTION":
+            return [...state, action.payload]
+        default:
+            return state;
+    }
 }
 
 function displayModal(state = false, action) {

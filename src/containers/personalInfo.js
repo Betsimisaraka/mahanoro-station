@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PersonalInfo } from '../components';
 
 export default function PersonalInfoContainer({ findCurrentUser }) {
+
     const [firstName, setFirstName] = useState(findCurrentUser.firstName);
     const [lastName, setLastName] = useState(findCurrentUser.lastName);
     const [phoneNumber, setPhoneNumber] = useState(findCurrentUser.phoneNumber);

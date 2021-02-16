@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, CloseBtn, Frame, Title, Description, ComfirmBtn } from './styles/modal';
+import { Container, CloseBtn, Frame, Title, Description, ComfirmBtn, Group } from './styles/modal';
 
 export default function ComfirmModal({ children, ...restProps }) {
     return <Container {...restProps}>{children}</Container>
@@ -12,6 +12,10 @@ ComfirmModal.CloseBtn = function ComfirmModalCloseBtn({ children, ...restProps }
 
 ComfirmModal.Frame = function ComfirmModalFrame({ children, ...restProps }) {
     return <Frame {...restProps}>{children}</Frame>
+}
+
+ComfirmModal.Group = function ComfirmModalGroup({ children, ...restProps }) {
+    return <Group {...restProps}>{children}</Group>
 }
 
 ComfirmModal.Title = function ComfirmModalTitle({ children, ...restProps }) {

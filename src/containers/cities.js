@@ -1,10 +1,20 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, {useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getCities } from '../actions';
 
 import{ Cities } from '../components';
 
 function CitiesContainer() {
     const destinations = useSelector(state => state.destinations);
+
+    const cities = useSelector(state => state.cities);
+    console.log(cities);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getCities());
+    }, [])
 
     return (
         <Cities>
@@ -15,6 +25,11 @@ function CitiesContainer() {
                 </Cities.Link>
             ))}
         </Cities>
+        // <div>
+        //     {cities.filter(city => (
+        //         <p>{city.destination === "Toamasina" ? "Toamasina" : null}</p>
+        //     ))}
+        // </div>
     )
 }
 

@@ -41,3 +41,10 @@ export function getCurrentUser(userId) {
         payload: userId,
     }
 }
+
+export function addToBooking(item) {
+    return {
+        type: "ADD_ACTION",
+        payload: item,
+    }
+}
