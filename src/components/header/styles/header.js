@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {Link as RouterLink} from 'react-router-dom';
 
 export const Container = styled.div`
     display: flex;
@@ -29,3 +30,5 @@ export const Small = styled.p`
     line-height: 28px;
     color: #A7A9BE;
 `;
+
+export const Link = styled(RouterLink)``;

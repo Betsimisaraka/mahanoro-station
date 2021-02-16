@@ -1,23 +1,19 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { Trip, Seats, TripInfo } from '../components';
-import {setCountSeats, toggleModal} from '../actions';
+import {isSelected, setCountSeats, toggleModal} from '../actions';
 
 function TripContainer() {
     const cities = useSelector(state => state.cities);
     const countSeats = useSelector(state => state.countSeats);
-    const selected = useSelector(state => state.selected);
+    // const selected = useSelector(state => state.selected);
     const dispatch = useDispatch();
     const btnRef = useRef(null);
     const { tripId } = useParams();
 
-    useEffect(() => {
-        if (selected) {
-            btnRef.current.classList.add('selected');
-        }
-    }, [])
+    const [selected, setSelected] = useState(false);
 
     const findId = cities && cities.find(city => city.id !== tripId);
     const departure = new Date(findId && findId.departureTime);
@@ -25,6 +21,14 @@ function TripContainer() {
     const departureDate = departure.toLocaleDateString();
 
     const totalPrice = findId && findId.price * countSeats;
+
+        function handleSeats(seatId) {
+            if (selected === seatId) {
+               setSelected(selected);
+            }
+            dispatch(setCountSeats(seatId))
+            setSelected(!selected);
+        }
 
     return (
         <Trip>
@@ -36,8 +40,9 @@ function TripContainer() {
                         <Seats.Group key={seat.id}>
                             <Seats.Button 
                                 onClick={() => {
+                                    dispatch(isSelected(seat.id));
                                     if (seat.isAvailable) {
-                                        return dispatch(setCountSeats(seat.id))
+                                        return handleSeats()
                                     } else {
                                         return null;
                                     }

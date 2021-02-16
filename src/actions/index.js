@@ -28,9 +28,9 @@ export function setCountSeats() {
     }
 }
 
-export function isSelected(tripid) {
+export function isSelected(tripId) {
     return {
         type: "IS_SELECTED",
-        payload: tripid,
+        payload: tripId,
     }
 }
