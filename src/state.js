@@ -10,11 +10,11 @@ export default {
         {id: 3, city: 'Vatomandry'},
         {id: 4, city: 'Moramanga'},
     ],
-    currentUsers: [
+    currentUser: [
         {
             id: 1,
             firstName: "Anita",
-            lastname: "Rasoa",
+            lastName: "Rasoa",
             phoneNumber: "0345291094"
         }
     ]

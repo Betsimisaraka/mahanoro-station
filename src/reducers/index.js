@@ -30,8 +30,13 @@ function destinations(state = [], action) {
     }
 }
 
-function currentUsers(state = [], action) {
-    return state
+function currentUser(state = [], action) {
+    switch (action.type) {
+        case "GET_CURRENT_USER":
+            return action.payload
+        default:
+            return state;
+    }
 }
 
 function booking(state = [], action) {
@@ -69,7 +74,7 @@ function countSeats(state = 0, action) {
 export default combineReducers({
     cities,
     destinations,
-    currentUsers,
+    currentUser,
     displayModal,
     countSeats,
     booking,

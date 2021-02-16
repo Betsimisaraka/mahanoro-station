@@ -8,6 +8,8 @@ export const GlobalStyles = createGlobalStyle`
     }
     ul {
         list-style: none;
+        margin: 0;
+        padding: 0;
     }
 
     h2 {
@@ -41,6 +43,15 @@ export const GlobalStyles = createGlobalStyle`
     }
     a {
         text-decoration: none;
+    }
+
+    fieldset {
+        border: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
     }
     .isvailable, .notvailable {
     border: none

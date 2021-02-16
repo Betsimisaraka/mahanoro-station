@@ -29,6 +29,9 @@ export const Small = styled.p`
     font-size: 24px;
     line-height: 28px;
     color: #A7A9BE;
+    &:active {
+        color: #FF8906;
+    }
 `;
 
 export const Link = styled(RouterLink)``;

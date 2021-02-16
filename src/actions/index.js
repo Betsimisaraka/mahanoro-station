@@ -34,3 +34,10 @@ export function isSelected(tripId) {
         payload: tripId,
     }
 }
+
+export function getCurrentUser(userId) {
+    return {
+        type: "GET_CURRENT_USER",
+        payload: userId,
+    }
+}
