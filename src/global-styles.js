@@ -13,15 +13,23 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     h2 {
-        font-family: Rubik;
+        font-family: 'Rubik';
         font-style: normal;
         font-weight: bold;
         font-size: 64px;
         line-height: 76px;
         color: #000000;
     }
+    h2 span{
+        font-family: 'Rubik';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 64px;
+        line-height: 76px;
+        color: #E53170;
+    }
     h3 {
-        font-family: Rubik;
+        font-family: 'Rubik';
         font-style: normal;
         font-weight: bold;
         font-size: 36px;
@@ -32,7 +40,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     h4 {
-        font-family: Rubik;
+        font-family: 'Rubik';
         font-style: normal;
         font-weight: 500;
         font-size: 24px;

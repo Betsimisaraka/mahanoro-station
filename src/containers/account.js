@@ -13,7 +13,10 @@ export default function MyAccountContainer() {
     
     return (
         <Account>
-            <Account.Title>My account <p>{findCurrentUser.firstName} {findCurrentUser.lastName}</p> </Account.Title>
+            <Account.Frame>
+                <Account.Image src="../images/flat-ui-user-interface.svg" alt="User interface" />
+                <Account.Title>My account <span>{findCurrentUser.firstName} {findCurrentUser.lastName}</span> </Account.Title>
+            </Account.Frame>
             <Account.Group>
                 <PersonalInfoContainer findCurrentUser={findCurrentUser}/>
                 <MyBookingContainer />

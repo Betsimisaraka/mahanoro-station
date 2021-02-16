@@ -38790,19 +38790,57 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Container = _styledComponents.default.div``;
+const Container = _styledComponents.default.div`
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+`;
 exports.Container = Container;
 const Title = _styledComponents.default.h4``;
 exports.Title = Title;
 const Base = _styledComponents.default.form``;
 exports.Base = Base;
-const Group = _styledComponents.default.fieldset``;
+const Group = _styledComponents.default.fieldset`
+    padding-bottom: 13px;
+`;
 exports.Group = Group;
-const Submit = _styledComponents.default.button``;
+const Submit = _styledComponents.default.button`
+    background: #E53170;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #FFFFFF;
+    padding: 28px 32px;
+    border: none;
+    margin-left: 300px;
+    margin-top: 42px;
+`;
 exports.Submit = Submit;
-const Label = _styledComponents.default.label``;
+const Label = _styledComponents.default.label`
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #0F0E17;
+    padding-bottom: 10px;
+`;
 exports.Label = Label;
-const Input = _styledComponents.default.input``;
+const Input = _styledComponents.default.input`
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #FF8906;
+    background: #000000;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    padding-left: 22px;
+    border: none;
+`;
 exports.Input = Input;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/personalInfo/index.js":[function(require,module,exports) {
 "use strict";
@@ -38872,20 +38910,53 @@ PersonalInfo.Submit = function PersonalInfoSubmit({
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Small = exports.Group = exports.Title = exports.Container = void 0;
+exports.Image = exports.Frame = exports.Small = exports.Group = exports.Title = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Container = _styledComponents.default.div``;
+const Container = _styledComponents.default.div`
+    padding-bottom: 73px;
+`;
 exports.Container = Container;
-const Title = _styledComponents.default.h2``;
+const Title = _styledComponents.default.h2`
+    padding-left: 70px;
+`;
 exports.Title = Title;
-const Group = _styledComponents.default.div``;
+const Group = _styledComponents.default.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    @media (min-width: 1000px) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+`;
 exports.Group = Group;
-const Small = _styledComponents.default.p``;
+const Small = _styledComponents.default.span``;
 exports.Small = Small;
+const Frame = _styledComponents.default.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 598px;
+    margin-left: auto;
+    margin-right: auto;
+`;
+exports.Frame = Frame;
+const Image = _styledComponents.default.img`
+    align-self: center;
+`;
+exports.Image = Image;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/account/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -38927,6 +38998,18 @@ Account.Group = function AccountGroup({
 }) {
   return /*#__PURE__*/_react.default.createElement(_account.Group, restProps, children);
 };
+
+Account.Image = function AccountImage({ ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_account.Image, restProps);
+};
+
+Account.Frame = function AccountFrame({
+  children,
+  ...restProps
+}) {
+  return /*#__PURE__*/_react.default.createElement(_account.Frame, restProps, children);
+};
 },{"react":"node_modules/react/index.js","./styles/account":"src/components/account/styles/account.js"}],"src/components/myBooking/styles/myBooking.js":[function(require,module,exports) {
 "use strict";
 
@@ -38943,23 +39026,74 @@ const Container = _styledComponents.default.div``;
 exports.Container = Container;
 const Title = _styledComponents.default.h4``;
 exports.Title = Title;
-const Base = _styledComponents.default.ul``;
+const Base = _styledComponents.default.ul`
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+`;
 exports.Base = Base;
-const Frame = _styledComponents.default.li``;
+const Frame = _styledComponents.default.li`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+`;
 exports.Frame = Frame;
-const Group = _styledComponents.default.div``;
+const Group = _styledComponents.default.div`
+    padding-left: 38px;
+`;
 exports.Group = Group;
-const Icon = _styledComponents.default.p``;
+const Icon = _styledComponents.default.img``;
 exports.Icon = Icon;
-const Destination = _styledComponents.default.p``;
+const Destination = _styledComponents.default.p`
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+`;
 exports.Destination = Destination;
-const Departure = _styledComponents.default.p``;
+const Departure = _styledComponents.default.p`
+     font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+`;
 exports.Departure = Departure;
-const Seats = _styledComponents.default.p``;
+const Seats = _styledComponents.default.p`
+     font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+`;
 exports.Seats = Seats;
-const Price = _styledComponents.default.p``;
+const Price = _styledComponents.default.p`
+     font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+`;
 exports.Price = Price;
-const CancelBtn = _styledComponents.default.button``;
+const CancelBtn = _styledComponents.default.button`
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background: #FF8906;
+    border: none;
+    margin-left: 44px;
+`;
 exports.CancelBtn = CancelBtn;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/myBooking/index.js":[function(require,module,exports) {
 "use strict";
@@ -39003,11 +39137,9 @@ MyBooking.Frame = function MyBookingFrame({
   return /*#__PURE__*/_react.default.createElement(_myBooking.Frame, restProps, children);
 };
 
-MyBooking.Icon = function MyBookingIcon({
-  children,
-  ...restProps
+MyBooking.Icon = function MyBookingIcon({ ...restProps
 }) {
-  return /*#__PURE__*/_react.default.createElement(_myBooking.Icon, restProps, children);
+  return /*#__PURE__*/_react.default.createElement(_myBooking.Icon, restProps);
 };
 
 MyBooking.Group = function MyBookingGroup({
@@ -41237,7 +41369,10 @@ var _components = require("../components");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function MyBookingContainer() {
-  return /*#__PURE__*/_react.default.createElement(_components.MyBooking, null, /*#__PURE__*/_react.default.createElement(_components.MyBooking.Title, null, "My booking"), /*#__PURE__*/_react.default.createElement(_components.MyBooking.Base, null, /*#__PURE__*/_react.default.createElement(_components.MyBooking.Frame, null, /*#__PURE__*/_react.default.createElement(_components.MyBooking.Icon, null, "\uD83D\uDE8D"), /*#__PURE__*/_react.default.createElement(_components.MyBooking.Group, null, /*#__PURE__*/_react.default.createElement(_components.MyBooking.Destination, null, "Destination"), /*#__PURE__*/_react.default.createElement(_components.MyBooking.Departure, null, "Date, time")), /*#__PURE__*/_react.default.createElement(_components.MyBooking.Group, null, /*#__PURE__*/_react.default.createElement(_components.MyBooking.Seats, null, "Seats"), /*#__PURE__*/_react.default.createElement(_components.MyBooking.Price, null, "Price")), /*#__PURE__*/_react.default.createElement(_components.MyBooking.CancelBtn, null, "Cancel"))));
+  return /*#__PURE__*/_react.default.createElement(_components.MyBooking, null, /*#__PURE__*/_react.default.createElement(_components.MyBooking.Title, null, "My booking"), /*#__PURE__*/_react.default.createElement(_components.MyBooking.Base, null, /*#__PURE__*/_react.default.createElement(_components.MyBooking.Frame, null, /*#__PURE__*/_react.default.createElement(_components.MyBooking.Icon, {
+    src: "../images/noto-v1_bus.svg",
+    alt: "Bus"
+  }), /*#__PURE__*/_react.default.createElement(_components.MyBooking.Group, null, /*#__PURE__*/_react.default.createElement(_components.MyBooking.Destination, null, "Destination"), /*#__PURE__*/_react.default.createElement(_components.MyBooking.Departure, null, "Date, time")), /*#__PURE__*/_react.default.createElement(_components.MyBooking.Group, null, /*#__PURE__*/_react.default.createElement(_components.MyBooking.Seats, null, "Seats"), /*#__PURE__*/_react.default.createElement(_components.MyBooking.Price, null, "Price")), /*#__PURE__*/_react.default.createElement(_components.MyBooking.CancelBtn, null, "Cancel"))));
 }
 },{"react":"node_modules/react/index.js","../components":"src/components/index.js"}],"src/containers/personalInfo.js":[function(require,module,exports) {
 "use strict";
@@ -41306,7 +41441,10 @@ function MyAccountContainer() {
     accountId
   } = (0, _reactRouterDom.useParams)();
   const findCurrentUser = currentUser.find(user => user.id !== accountId);
-  return /*#__PURE__*/_react.default.createElement(_components.Account, null, /*#__PURE__*/_react.default.createElement(_components.Account.Title, null, "My account ", /*#__PURE__*/_react.default.createElement("p", null, findCurrentUser.firstName, " ", findCurrentUser.lastName), " "), /*#__PURE__*/_react.default.createElement(_components.Account.Group, null, /*#__PURE__*/_react.default.createElement(_personalInfo.default, {
+  return /*#__PURE__*/_react.default.createElement(_components.Account, null, /*#__PURE__*/_react.default.createElement(_components.Account.Frame, null, /*#__PURE__*/_react.default.createElement(_components.Account.Image, {
+    src: "../images/flat-ui-user-interface.svg",
+    alt: "User interface"
+  }), /*#__PURE__*/_react.default.createElement(_components.Account.Title, null, "My account ", /*#__PURE__*/_react.default.createElement("span", null, findCurrentUser.firstName, " ", findCurrentUser.lastName), " ")), /*#__PURE__*/_react.default.createElement(_components.Account.Group, null, /*#__PURE__*/_react.default.createElement(_personalInfo.default, {
     findCurrentUser: findCurrentUser
   }), /*#__PURE__*/_react.default.createElement(_myBooking.default, null)));
 }
@@ -41607,15 +41745,23 @@ const GlobalStyles = (0, _styledComponents.createGlobalStyle)`
     }
 
     h2 {
-        font-family: Rubik;
+        font-family: 'Rubik';
         font-style: normal;
         font-weight: bold;
         font-size: 64px;
         line-height: 76px;
         color: #000000;
     }
+    h2 span{
+        font-family: 'Rubik';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 64px;
+        line-height: 76px;
+        color: #E53170;
+    }
     h3 {
-        font-family: Rubik;
+        font-family: 'Rubik';
         font-style: normal;
         font-weight: bold;
         font-size: 36px;
@@ -41626,7 +41772,7 @@ const GlobalStyles = (0, _styledComponents.createGlobalStyle)`
     }
 
     h4 {
-        font-family: Rubik;
+        font-family: 'Rubik';
         font-style: normal;
         font-weight: 500;
         font-size: 24px;

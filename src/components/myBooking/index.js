@@ -18,8 +18,8 @@ MyBooking.Frame = function MyBookingFrame({ children, ...restProps }) {
     return <Frame {...restProps}>{children}</Frame>
 }
 
-MyBooking.Icon = function MyBookingIcon({ children, ...restProps }) {
-    return <Icon {...restProps}>{children}</Icon>
+MyBooking.Icon = function MyBookingIcon({ ...restProps }) {
+    return <Icon {...restProps} />
 }
 
 MyBooking.Group = function MyBookingGroup({ children, ...restProps }) {

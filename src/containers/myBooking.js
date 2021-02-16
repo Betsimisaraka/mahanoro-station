@@ -7,7 +7,7 @@ export default function MyBookingContainer() {
             <MyBooking.Title>My booking</MyBooking.Title>
             <MyBooking.Base>
                 <MyBooking.Frame>
-                    <MyBooking.Icon>🚍</MyBooking.Icon>
+                    <MyBooking.Icon src="../images/noto-v1_bus.svg" alt="Bus"/>
                     <MyBooking.Group>
                         <MyBooking.Destination>Destination</MyBooking.Destination>
                         <MyBooking.Departure>Date, time</MyBooking.Departure>
