@@ -20,6 +20,7 @@ export const Title = styled.h1`
     font-size: 36px;
     line-height: 43px;
     color: #FFFFFE;
+    padding-left: 30px;
 `;
 
 export const Small = styled.p`
@@ -34,4 +35,8 @@ export const Small = styled.p`
     }
 `;
 
-export const Link = styled(RouterLink)``;
+export const Link = styled(RouterLink)`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;

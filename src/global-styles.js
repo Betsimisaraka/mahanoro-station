@@ -69,6 +69,10 @@ export const GlobalStyles = createGlobalStyle`
         background-color: transparent;
     }
 
+    .isvailable:active {
+        background-color: yellow;
+    }
+
     .notvailable {
         background-color: red;
     }

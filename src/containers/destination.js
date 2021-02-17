@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { Destination } from '../components';
 import { getCities } from '../actions';
@@ -9,7 +9,7 @@ function DestinationContainer() {
     const { destination } = useParams();
     console.log(destination);
     const cities = useSelector(state => state.cities);
-
+    
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -31,6 +31,8 @@ function DestinationContainer() {
 
                     const availableSeates = city.seats.reduce((a, b) => b.isAvailable ? ++a : a, 0);
 
+                    const disabled = availableSeates === 0 ? "disabled" : null;
+
                     return (
                         <Destination.Frame key={city.id}>
                             <img src="../images/noto-v1_bus.svg" alt="Bus" />
@@ -43,7 +45,7 @@ function DestinationContainer() {
                                 <Destination.Seats><span>{availableSeates}</span> seats lefts</Destination.Seats>
                             </Destination.Group>
                             <Destination.Link to={`/trip/${city.id}`}>
-                                <Destination.Book type="button">Book a place</Destination.Book>
+                                <Destination.Book disabled={disabled} type="button">Book a place</Destination.Book>
                             </Destination.Link>
                         </Destination.Frame>
                     )

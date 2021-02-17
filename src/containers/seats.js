@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -9,21 +9,19 @@ export default function SeatsContainer({ findId }) {
     const dispatch = useDispatch();
 
     const [selected, setSelected] = useState(false);
+    console.log(selected);
+
+    // const btnRef = useRef(null);
+
+    // useEffect(() => {
+    //     btnRef.current.style.backgroundColor = "green";
+    // }, []);
 
     function handleSeats(seatId) {
-        console.log(seatId);
-        const mapSeats = findId.seats.map(seat => {
-            if (seat.id === seatId) {
-                return {
-                    ...seat,
-                    isAvailable: !seat.isAvailable
-                }
-            }
-            
-        })
+        dispatch(isSelected(seatId));
         dispatch(setCountSeats(seatId));
-        setSelected(!selected)
-        return mapSeats;
+        setSelected(!selected);
+        // btnRef.current.style.backgroundColor = "green";
     }
 
     return (
@@ -33,9 +31,13 @@ export default function SeatsContainer({ findId }) {
                     {findId && findId.seats.map(seat => (
                         <Seats.Group key={seat.id}>
                             <Seats.Button 
-                                onClick={() => 
+                                // ref={btnRef}
+                                onClick={() => {
+                                    if (seat.isAvailable) {
                                         handleSeats(seat.id)
+                                    } 
                                    } 
+                                }
                                 className={`${seat.isAvailable ? "isvailable" : "notvailable"}`}
                             >💺</Seats.Button>
                         </Seats.Group>

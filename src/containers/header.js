@@ -4,11 +4,13 @@ import { useSelector } from 'react-redux';
 import { Header } from '../components';
 
 export default function HeaderContainer() {
-    const currentUser = useSelector(state => state.currentUser)
+    const currentUser = useSelector(state => state.currentUser);
+    console.log(currentUser);
 
     return (
         <Header>
             <Header.Link to="/">
+                <img src="../images/vector.svg" alt="Bus" />
                 <Header.Title>Mahanoro station</Header.Title>
             </Header.Link>
             { currentUser.map(user => (

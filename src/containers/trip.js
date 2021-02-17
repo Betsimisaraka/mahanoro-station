@@ -1,6 +1,7 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { addToBooking } from '../actions';
 
 import { Trip } from '../components';
 import SeatsContainer from './seats';

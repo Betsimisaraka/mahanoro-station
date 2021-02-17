@@ -1,7 +1,6 @@
 import {combineReducers} from 'redux';
 
 function cities(state = [], action) {
-    console.log(state);
     switch(action.type) {
         case "GET_CITIES":
             return action.payload;
@@ -46,7 +45,11 @@ function currentUser(state = [], action) {
 function booking(state = [], action) {
     switch (action.type) {
         case "ADD_ACTION":
-            return [...state, action.payload]
+            return [...state, action.payload];
+        case "REMOVE_BOOKING": {
+            const removeBooking = state.filter(item => item.id !== action.payload);
+            return [...removeBooking];
+        }
         default:
             return state;
     }
@@ -63,6 +66,8 @@ function displayModal(state = false, action) {
 
 function countSeats(state = 0, action) {
     switch (action.type) {
+        case "RESET_COUNT":
+            return state;
         case "SET_COUNT_SEATS":
             return state + 1;
         default:
@@ -80,6 +85,17 @@ function countSeats(state = 0, action) {
 //     }
 // }
 
+function total(state = 0, action) {
+    switch (action.type) {
+        case "RESET_TOTAL":
+            return state;
+        case "SET_TOTAL":
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
     cities,
     destinations,
@@ -87,5 +103,6 @@ export default combineReducers({
     displayModal,
     countSeats,
     booking,
+    total,
     // selected,
 })

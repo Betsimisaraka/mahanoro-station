@@ -2,6 +2,7 @@ export default {
     cities: [],
     displayModal: false,
     countSeats: 0,
+    total: 0,
     booking: [],
     // selected: false,
     destinations: [

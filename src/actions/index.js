@@ -48,3 +48,29 @@ export function addToBooking(item) {
         payload: item,
     }
 }
+
+export function removeFromBooking(itemId) {
+    return {
+        type: "REMOVE_BOOKING",
+        payload: itemId,
+    }
+}
+
+export function setTotal(newTotal) {
+    return {
+        type: "SET_TOTAL",
+        payload: newTotal
+    }
+}
+
+export function resetCount() {
+    return {
+        type: "RESET_COUNT",
+    }
+}
+
+export function resetTotal() {
+    return {
+        type: "RESET_TOTAL",
+    }
+}
