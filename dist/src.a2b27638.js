@@ -38262,13 +38262,39 @@ var _reactRouterDom = require("react-router-dom");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Container = _styledComponents.default.div``;
+const Container = _styledComponents.default.div`
+
+    @media (min-width: 1000px) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 85px;
+        row-gap: 38px;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 200px;
+    }
+    div {
+        grid-column: 1 / 3;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+`;
 exports.Container = Container;
-const Title = _styledComponents.default.h2``;
+const Title = _styledComponents.default.h2`
+    padding-left: 52px;
+`;
 exports.Title = Title;
 const Link = (0, _styledComponents.default)(_reactRouterDom.Link)`
-   
-
+    background: #0F0E17;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    padding-left: 33px;
+    padding-right: 78px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 `;
 exports.Link = Link;
 const SubTitle = _styledComponents.default.h3`
@@ -38279,11 +38305,8 @@ const SubTitle = _styledComponents.default.h3`
     line-height: 43px;
     text-transform: uppercase;
     color: #FFFFFF;
-    background: #0F0E17;
-    padding-top: 28px;
-    padding-bottom: 28px;
-    padding-left: 33px;
-    padding-right: 78px;
+    margin: 0;
+    padding-left: 31px;
 `;
 exports.SubTitle = SubTitle;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/components/cities/index.js":[function(require,module,exports) {
@@ -38463,13 +38486,25 @@ var _reactRouterDom = require("react-router-dom");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Container = _styledComponents.default.div``;
+const Container = _styledComponents.default.div`
+    @media (min-width: 1000px) {
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+`;
 exports.Container = Container;
 const Title = _styledComponents.default.h2``;
 exports.Title = Title;
 const Base = _styledComponents.default.ul``;
 exports.Base = Base;
-const Frame = _styledComponents.default.li``;
+const Frame = _styledComponents.default.li`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+`;
 exports.Frame = Frame;
 const Group = _styledComponents.default.div``;
 exports.Group = Group;
@@ -38477,7 +38512,7 @@ const Day = _styledComponents.default.p``;
 exports.Day = Day;
 const Time = _styledComponents.default.p``;
 exports.Time = Time;
-const Date = _styledComponents.default.h3``;
+const Date = _styledComponents.default.p``;
 exports.Date = Date;
 const Seats = _styledComponents.default.p``;
 exports.Seats = Seats;
@@ -38596,9 +38631,20 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Container = _styledComponents.default.div``;
+const Container = _styledComponents.default.div`
+    
+    @media (min-width: 1000px) {
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+`;
 exports.Container = Container;
-const Title = _styledComponents.default.h2``;
+const Title = _styledComponents.default.h2`
+    grid-column: 1 / 3;
+`;
 exports.Title = Title;
 const Span = _styledComponents.default.span``;
 exports.Span = Span;
@@ -38654,7 +38700,8 @@ const Title = _styledComponents.default.h4``;
 exports.Title = Title;
 const Base = _styledComponents.default.ul``;
 exports.Base = Base;
-const Group = _styledComponents.default.li``;
+const Group = _styledComponents.default.li`
+`;
 exports.Group = Group;
 const Button = _styledComponents.default.button``;
 exports.Button = Button;
@@ -39431,10 +39478,16 @@ function CitiesContainer() {
   (0, _react.useEffect)(() => {
     dispatch((0, _actions.getCities)());
   }, []);
-  return /*#__PURE__*/_react.default.createElement(_components.Cities, null, /*#__PURE__*/_react.default.createElement(_components.Cities.Title, null, "Where are you going?"), destinations.map(city => /*#__PURE__*/_react.default.createElement(_components.Cities.Link, {
+  return /*#__PURE__*/_react.default.createElement(_components.Cities, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: "../images/noto-v1_bus.svg",
+    alt: "Bus"
+  }), /*#__PURE__*/_react.default.createElement(_components.Cities.Title, null, "Where are you going?")), destinations.map(city => /*#__PURE__*/_react.default.createElement(_components.Cities.Link, {
     to: `/city/${city.city}`,
     key: city.id
-  }, /*#__PURE__*/_react.default.createElement(_components.Cities.SubTitle, null, city.city)))) // <div>
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: "../images/vector-thumb.svg",
+    alt: "Thumb"
+  }), /*#__PURE__*/_react.default.createElement(_components.Cities.SubTitle, null, city.city)))) // <div>
   //     {cities.filter(city => (
   //         <p>{city.destination === "Toamasina" ? "Toamasina" : null}</p>
   //     ))}
@@ -39648,7 +39701,10 @@ function DestinationContainer() {
     const availableSeates = city.seats.reduce((a, b) => b.isAvailable ? ++a : a, 0);
     return /*#__PURE__*/_react.default.createElement(_components.Destination.Frame, {
       key: city.id
-    }, /*#__PURE__*/_react.default.createElement(_components.Destination.Group, null, /*#__PURE__*/_react.default.createElement(_components.Destination.Day, null, getDayName), /*#__PURE__*/_react.default.createElement(_components.Destination.Time, null, getTime)), /*#__PURE__*/_react.default.createElement(_components.Destination.Group, null, /*#__PURE__*/_react.default.createElement(_components.Destination.Date, null, getFullDate), /*#__PURE__*/_react.default.createElement(_components.Destination.Seats, null, /*#__PURE__*/_react.default.createElement("span", null, availableSeates), " seats lefts")), /*#__PURE__*/_react.default.createElement(_components.Destination.Link, {
+    }, /*#__PURE__*/_react.default.createElement("img", {
+      src: "../images/noto-v1_bus.svg",
+      alt: "Bus"
+    }), /*#__PURE__*/_react.default.createElement(_components.Destination.Group, null, /*#__PURE__*/_react.default.createElement(_components.Destination.Day, null, getDayName), /*#__PURE__*/_react.default.createElement(_components.Destination.Time, null, getTime)), /*#__PURE__*/_react.default.createElement(_components.Destination.Group, null, /*#__PURE__*/_react.default.createElement(_components.Destination.Date, null, getFullDate), /*#__PURE__*/_react.default.createElement(_components.Destination.Seats, null, /*#__PURE__*/_react.default.createElement("span", null, availableSeates), " seats lefts")), /*#__PURE__*/_react.default.createElement(_components.Destination.Link, {
       to: `/trip/${city.id}`
     }, /*#__PURE__*/_react.default.createElement(_components.Destination.Book, {
       type: "button"
@@ -42019,7 +42075,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51878" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53971" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

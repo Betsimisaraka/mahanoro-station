@@ -18,9 +18,13 @@ function CitiesContainer() {
 
     return (
         <Cities>
-            <Cities.Title>Where are you going?</Cities.Title>
+            <div>
+                <img src="../images/noto-v1_bus.svg" alt="Bus" />    
+                <Cities.Title>Where are you going?</Cities.Title>
+            </div>
             {destinations.map(city => (
                 <Cities.Link to={`/city/${city.city}`} key={city.id}>
+                    <img src="../images/vector-thumb.svg" alt="Thumb" /> 
                     <Cities.SubTitle>{city.city}</Cities.SubTitle>
                 </Cities.Link>
             ))}

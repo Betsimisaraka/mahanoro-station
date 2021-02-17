@@ -33,6 +33,7 @@ function DestinationContainer() {
 
                     return (
                         <Destination.Frame key={city.id}>
+                            <img src="../images/noto-v1_bus.svg" alt="Bus" />
                             <Destination.Group>
                                 <Destination.Day>{getDayName}</Destination.Day>
                                 <Destination.Time>{getTime}</Destination.Time>
@@ -41,7 +42,6 @@ function DestinationContainer() {
                                 <Destination.Date>{getFullDate}</Destination.Date>
                                 <Destination.Seats><span>{availableSeates}</span> seats lefts</Destination.Seats>
                             </Destination.Group>
-                            
                             <Destination.Link to={`/trip/${city.id}`}>
                                 <Destination.Book type="button">Book a place</Destination.Book>
                             </Destination.Link>

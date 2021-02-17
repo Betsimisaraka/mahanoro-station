@@ -6,6 +6,7 @@ export const Title = styled.h4``;
 
 export const Base = styled.ul``;
 
-export const Group = styled.li``;
+export const Group = styled.li`
+`;
 
 export const Button = styled.button``;

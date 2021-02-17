@@ -14,7 +14,7 @@ function TripContainer() {
 
     return (
         <Trip>
-            <Trip.Title>Book a seat to: <Trip.Span>{findId && findId.destination}</Trip.Span></Trip.Title>
+            <Trip.Title>Book a seat to: <Trip.Span>{findId && findId.destination}</Trip.Span></Trip.Title>   
             <SeatsContainer findId={findId} />
             <TripInfoContainer findId={findId} />
         </Trip>
