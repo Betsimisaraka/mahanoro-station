@@ -20,7 +20,10 @@ function DestinationContainer() {
 
     return (
         <Destination>
-            <Destination.Title>Next trips to: <span>{destination}</span></Destination.Title>
+            <div>
+                <img src="../images/twemoji_alarm-clock.svg" alt="Clock" />
+                <Destination.Title>Next trips to: <span>{destination}</span></Destination.Title>
+            </div>
             <Destination.Base>     
                 {filterCities.map(city => {
                     const date = new Date(city.departureTime);

@@ -38268,7 +38268,6 @@ var _reactRouterDom = require("react-router-dom");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const Container = _styledComponents.default.div`
-
     @media (min-width: 1000px) {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -38300,6 +38299,7 @@ const Link = (0, _styledComponents.default)(_reactRouterDom.Link)`
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 38px
 `;
 exports.Link = Link;
 const SubTitle = _styledComponents.default.h3`
@@ -38492,6 +38492,15 @@ var _reactRouterDom = require("react-router-dom");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const Container = _styledComponents.default.div`
+    & div:first-child {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
     @media (min-width: 1000px) {
         max-width: 1000px;
         margin-left: auto;
@@ -38499,33 +38508,87 @@ const Container = _styledComponents.default.div`
     }
 `;
 exports.Container = Container;
-const Title = _styledComponents.default.h2``;
+const Title = _styledComponents.default.h2`
+    padding-left: 68px;
+`;
 exports.Title = Title;
-const Base = _styledComponents.default.ul``;
+const Base = _styledComponents.default.ul`
+`;
 exports.Base = Base;
 const Frame = _styledComponents.default.li`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin: 0;
+    padding: 0;
     flex-wrap: wrap;
 `;
 exports.Frame = Frame;
 const Group = _styledComponents.default.div``;
 exports.Group = Group;
-const Day = _styledComponents.default.p``;
+const Day = _styledComponents.default.p`
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    color: #FF8906;
+`;
 exports.Day = Day;
-const Time = _styledComponents.default.p``;
+const Time = _styledComponents.default.p`
+     font-family: 'Rubik';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    color: #FF8906;
+`;
 exports.Time = Time;
-const Date = _styledComponents.default.p``;
+const Date = _styledComponents.default.p`
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    color: #000000;
+`;
 exports.Date = Date;
-const Seats = _styledComponents.default.p``;
+const Seats = _styledComponents.default.p`
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    color: #000000;
+    span {
+        font-family: 'Rubik';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 36px;
+        line-height: 43px;
+        color: #E53170;
+    }
+`;
 exports.Seats = Seats;
 const Span = _styledComponents.default.span``;
 exports.Span = Span;
 const Link = (0, _styledComponents.default)(_reactRouterDom.Link)``;
 exports.Link = Link;
-const Book = _styledComponents.default.button``;
+const Book = _styledComponents.default.button`
+    background: #E53170;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    color: #FFFFFF;
+    padding: 25px 50px;
+    border: none;
+    &:disabled {
+        opacity: 0.1;
+    }
+`;
 exports.Book = Book;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/components/destination/index.js":[function(require,module,exports) {
 "use strict";
@@ -38637,6 +38700,16 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const Container = _styledComponents.default.div`
+    & div:first-child {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        grid-column: 1 / 3;
+    }
     
     @media (min-width: 1000px) {
         max-width: 1000px;
@@ -38648,7 +38721,7 @@ const Container = _styledComponents.default.div`
 `;
 exports.Container = Container;
 const Title = _styledComponents.default.h2`
-    grid-column: 1 / 3;
+    /* grid-column: 1 / 3; */
 `;
 exports.Title = Title;
 const Span = _styledComponents.default.span``;
@@ -38703,9 +38776,15 @@ const Container = _styledComponents.default.div``;
 exports.Container = Container;
 const Title = _styledComponents.default.h4``;
 exports.Title = Title;
-const Base = _styledComponents.default.ul``;
+const Base = _styledComponents.default.ul`
+     display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 15px;
+    row-gap: 20px;
+`;
 exports.Base = Base;
 const Group = _styledComponents.default.li`
+   
 `;
 exports.Group = Group;
 const Button = _styledComponents.default.button``;
@@ -38774,21 +38853,107 @@ const Container = _styledComponents.default.div``;
 exports.Container = Container;
 const Title = _styledComponents.default.h4``;
 exports.Title = Title;
-const Time = _styledComponents.default.p``;
+const Time = _styledComponents.default.p`
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #A7A9BE;
+    span {
+        color: #000000;
+    }
+`;
 exports.Time = Time;
-const Name = _styledComponents.default.p``;
+const Name = _styledComponents.default.p`
+     font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #A7A9BE;
+    span {
+        color: #000000;
+    }
+`;
 exports.Name = Name;
-const Contact = _styledComponents.default.p``;
+const Contact = _styledComponents.default.p`
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #A7A9BE;
+    span {
+        color: #000000;
+    }
+`;
 exports.Contact = Contact;
-const Duration = _styledComponents.default.p``;
+const Duration = _styledComponents.default.p`
+     font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #A7A9BE;
+    span {
+        color: #000000;
+    }
+`;
 exports.Duration = Duration;
-const Break = _styledComponents.default.p``;
+const Break = _styledComponents.default.p`
+     font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #A7A9BE;
+    span {
+        color: #000000;
+    }
+`;
 exports.Break = Break;
-const Price = _styledComponents.default.p``;
+const Price = _styledComponents.default.p`
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 57px;
+    color: #2F2F2F;
+    span {
+        color: #FF8906;
+    }
+`;
 exports.Price = Price;
-const Book = _styledComponents.default.button``;
+const Book = _styledComponents.default.button`
+    background: #E53170;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 28px 43px;
+    border: none;
+    span {
+        color: #FFAC33;
+    }
+`;
 exports.Book = Book;
-const Total = _styledComponents.default.p``;
+const Total = _styledComponents.default.p`
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #000000;
+    span {
+        color: #FF8906;
+    }
+`;
 exports.Total = Total;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"src/components/TripInfo/index.js":[function(require,module,exports) {
 "use strict";
@@ -39580,15 +39745,12 @@ function SeatsContainer({
 }) {
   const dispatch = (0, _reactRedux.useDispatch)();
   const [selected, setSelected] = (0, _react.useState)(false);
-  console.log(selected); // const btnRef = useRef(null);
-  // useEffect(() => {
-  //     btnRef.current.style.backgroundColor = "green";
-  // }, []);
+  console.log(selected);
 
   function handleSeats(seatId) {
     dispatch((0, _actions.isSelected)(seatId));
     dispatch((0, _actions.setCountSeats)(seatId));
-    setSelected(!selected); // btnRef.current.style.backgroundColor = "green";
+    setSelected(!selected);
   }
 
   return /*#__PURE__*/_react.default.createElement(_components.Seats, null, /*#__PURE__*/_react.default.createElement(_components.Seats.Title, null, "Pick a seat"), /*#__PURE__*/_react.default.createElement(_components.Seats.Base, null, findId && findId.seats.map(seat => /*#__PURE__*/_react.default.createElement(_components.Seats.Group, {
@@ -39601,7 +39763,10 @@ function SeatsContainer({
       }
     },
     className: `${seat.isAvailable ? "isvailable" : "notvailable"}`
-  }, "\uD83D\uDCBA")))));
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: "../images/emojione_seat.svg",
+    alt: "Chairs"
+  }))))));
 }
 },{"react":"node_modules/react/index.js","react-redux":"node_modules/react-redux/es/index.js","../actions":"src/actions/index.js","../components":"src/components/index.js"}],"src/containers/tripInfo.js":[function(require,module,exports) {
 "use strict";
@@ -39646,7 +39811,7 @@ function TripInfoContainer({
     dispatch((0, _actions.resetTotal)());
   }
 
-  return /*#__PURE__*/_react.default.createElement(_components.TripInfo, null, /*#__PURE__*/_react.default.createElement(_components.TripInfo.Title, null, "Trip informations:"), /*#__PURE__*/_react.default.createElement(_components.TripInfo.Time, null, "Departure time: ", /*#__PURE__*/_react.default.createElement("span", null, departureTime, ", ", departureDate)), /*#__PURE__*/_react.default.createElement(_components.TripInfo.Name, null, "Driver: ", /*#__PURE__*/_react.default.createElement("span", null, findId && findId.driverName)), /*#__PURE__*/_react.default.createElement(_components.TripInfo.Contact, null, "Driver's contact: ", /*#__PURE__*/_react.default.createElement("span", null, findId && findId.driverContact)), /*#__PURE__*/_react.default.createElement(_components.TripInfo.Duration, null, "Estimated duration: ", /*#__PURE__*/_react.default.createElement("span", null, findId && findId.estimatedDuration)), /*#__PURE__*/_react.default.createElement(_components.TripInfo.Break, null, "Breaks: ", /*#__PURE__*/_react.default.createElement("span", null, findId && findId.breaks)), /*#__PURE__*/_react.default.createElement(_components.TripInfo.Price, null, findId && findId.price, "Ar/seat"), /*#__PURE__*/_react.default.createElement(_components.TripInfo.Book, {
+  return /*#__PURE__*/_react.default.createElement(_components.TripInfo, null, /*#__PURE__*/_react.default.createElement(_components.TripInfo.Title, null, "Trip informations:"), /*#__PURE__*/_react.default.createElement(_components.TripInfo.Time, null, "Departure time: ", /*#__PURE__*/_react.default.createElement("span", null, departureTime, ", ", departureDate)), /*#__PURE__*/_react.default.createElement(_components.TripInfo.Name, null, "Driver: ", /*#__PURE__*/_react.default.createElement("span", null, findId && findId.driverName)), /*#__PURE__*/_react.default.createElement(_components.TripInfo.Contact, null, "Driver's contact: ", /*#__PURE__*/_react.default.createElement("span", null, findId && findId.driverContact)), /*#__PURE__*/_react.default.createElement(_components.TripInfo.Duration, null, "Estimated duration: ", /*#__PURE__*/_react.default.createElement("span", null, findId && findId.estimatedDuration)), /*#__PURE__*/_react.default.createElement(_components.TripInfo.Break, null, "Breaks: ", /*#__PURE__*/_react.default.createElement("span", null, findId && findId.breaks)), /*#__PURE__*/_react.default.createElement(_components.TripInfo.Price, null, " ", /*#__PURE__*/_react.default.createElement("span", null, findId && findId.price), "Ar/seat"), /*#__PURE__*/_react.default.createElement(_components.TripInfo.Book, {
     onClick: reseting,
     type: "button"
   }, "Book ", /*#__PURE__*/_react.default.createElement("span", null, countSeats), " seats"), /*#__PURE__*/_react.default.createElement(_components.TripInfo.Total, null, "Total: ", /*#__PURE__*/_react.default.createElement("span", null, total), " Ar"));
@@ -39681,7 +39846,10 @@ function TripContainer() {
     tripId
   } = (0, _reactRouterDom.useParams)();
   const findId = cities && cities.find(city => city.id === Number(tripId));
-  return /*#__PURE__*/_react.default.createElement(_components.Trip, null, /*#__PURE__*/_react.default.createElement(_components.Trip.Title, null, "Book a seat to: ", /*#__PURE__*/_react.default.createElement(_components.Trip.Span, null, findId && findId.destination)), /*#__PURE__*/_react.default.createElement(_seats.default, {
+  return /*#__PURE__*/_react.default.createElement(_components.Trip, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: "../images/noto-v1_bus.svg",
+    alt: "Bus"
+  }), /*#__PURE__*/_react.default.createElement(_components.Trip.Title, null, "Book a seat to: ", /*#__PURE__*/_react.default.createElement(_components.Trip.Span, null, findId && findId.destination))), /*#__PURE__*/_react.default.createElement(_seats.default, {
     findId: findId
   }), /*#__PURE__*/_react.default.createElement(_tripInfo.default, {
     findId: findId
@@ -39742,7 +39910,10 @@ function DestinationContainer() {
     dispatch((0, _actions.getCities)());
   }, []);
   const filterCities = cities.filter(city => city.destination === destination);
-  return /*#__PURE__*/_react.default.createElement(_components.Destination, null, /*#__PURE__*/_react.default.createElement(_components.Destination.Title, null, "Next trips to: ", /*#__PURE__*/_react.default.createElement("span", null, destination)), /*#__PURE__*/_react.default.createElement(_components.Destination.Base, null, filterCities.map(city => {
+  return /*#__PURE__*/_react.default.createElement(_components.Destination, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: "../images/twemoji_alarm-clock.svg",
+    alt: "Clock"
+  }), /*#__PURE__*/_react.default.createElement(_components.Destination.Title, null, "Next trips to: ", /*#__PURE__*/_react.default.createElement("span", null, destination))), /*#__PURE__*/_react.default.createElement(_components.Destination.Base, null, filterCities.map(city => {
     const date = new Date(city.departureTime);
     const options = {
       weekday: 'long'

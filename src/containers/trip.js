@@ -15,7 +15,10 @@ function TripContainer() {
 
     return (
         <Trip>
-            <Trip.Title>Book a seat to: <Trip.Span>{findId && findId.destination}</Trip.Span></Trip.Title>   
+            <div>
+                <img src="../images/noto-v1_bus.svg" alt="Bus" />
+                <Trip.Title>Book a seat to: <Trip.Span>{findId && findId.destination}</Trip.Span></Trip.Title>   
+            </div>
             <SeatsContainer findId={findId} />
             <TripInfoContainer findId={findId} />
         </Trip>

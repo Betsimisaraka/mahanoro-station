@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import {Link as RouterLink} from 'react-router-dom'; 
 
 export const Container = styled.div`
-
     @media (min-width: 1000px) {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -34,6 +33,7 @@ export const Link = styled(RouterLink)`
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 38px
 `;
 
 export const SubTitle = styled.h3`

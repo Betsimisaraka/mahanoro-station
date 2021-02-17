@@ -32,7 +32,7 @@ export default function TripInfoContainer({ findId }) {
             <TripInfo.Contact>Driver's contact: <span>{findId && findId.driverContact}</span></TripInfo.Contact> 
             <TripInfo.Duration>Estimated duration: <span>{findId && findId.estimatedDuration}</span></TripInfo.Duration>
             <TripInfo.Break>Breaks: <span>{findId && findId.breaks}</span></TripInfo.Break>
-            <TripInfo.Price>{findId && findId.price}Ar/seat</TripInfo.Price>  
+            <TripInfo.Price> <span>{findId && findId.price}</span>Ar/seat</TripInfo.Price>  
             <TripInfo.Book onClick={reseting}type="button">Book <span>{countSeats}</span> seats</TripInfo.Book>
             <TripInfo.Total>Total: <span>{total}</span> Ar</TripInfo.Total>          
         </TripInfo>

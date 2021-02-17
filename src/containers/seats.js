@@ -11,17 +11,10 @@ export default function SeatsContainer({ findId }) {
     const [selected, setSelected] = useState(false);
     console.log(selected);
 
-    // const btnRef = useRef(null);
-
-    // useEffect(() => {
-    //     btnRef.current.style.backgroundColor = "green";
-    // }, []);
-
     function handleSeats(seatId) {
         dispatch(isSelected(seatId));
         dispatch(setCountSeats(seatId));
         setSelected(!selected);
-        // btnRef.current.style.backgroundColor = "green";
     }
 
     return (
@@ -39,7 +32,9 @@ export default function SeatsContainer({ findId }) {
                                    } 
                                 }
                                 className={`${seat.isAvailable ? "isvailable" : "notvailable"}`}
-                            >💺</Seats.Button>
+                            >
+                                <img src="../images/emojione_seat.svg" alt="Chairs" />
+                            </Seats.Button>
                         </Seats.Group>
                     ))}
                 </Seats.Base>              
